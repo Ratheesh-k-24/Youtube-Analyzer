@@ -5,7 +5,7 @@ const videoSchema = new mongoose.Schema({
   videoCategory: String,
   videoName: String,
   views: Number,
-  comments: String,
+  comments: [String],
   subscription: Number,
 });
 
