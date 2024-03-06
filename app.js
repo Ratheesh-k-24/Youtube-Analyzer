@@ -1,23 +1,18 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-mongoose
-  .connect("mongodb://127.0.0.1:27017/details")
-  .then(() => {
-    console.log("Connected to MongoDB");
-  })
-  .catch((err) => {
-    console.error("Error connecting to MongoDB:", err.message);
-  });
 const userRoutes = require("./routes/userRoutes");
 const videosRoutes = require("./routes/videosRoutes");
-require("./backend/model/db");
+
+//akshan
+require("./model/db");
 
 app.use(express.json());
-app.use(express.static("views"));
 
-app.use("/api", userRoutes);
-app.use("/api", videosRoutes);
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("views"));
+app.set("view engine", "ejs");
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

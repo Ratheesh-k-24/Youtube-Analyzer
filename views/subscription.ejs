@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Videos</title>
+</head>
+<body>
+  <h1>All Videos</h1>
+  <ul>
+    <% videos.forEach(video => { %>
+      <li>
+        <h2><%= video.video_name %></h2>
+        <p>Views: <%= video.views %></p>
+        <p>Subscriptions: <%= video.subscription %></p>
+      </li>
+    <% }); %>
+  </ul>
+</body>
+</html>
