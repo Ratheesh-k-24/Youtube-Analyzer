@@ -13,6 +13,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("views"));
 app.set("view engine", "ejs");
 
+app.use("/api", userRoutes);
+app.use("/api", videosRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
