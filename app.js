@@ -2,7 +2,9 @@ const express = require("express");
 const app = express();
 const userRoutes = require("./routes/userRoutes");
 const videosRoutes = require("./routes/videosRoutes");
+//akshan
 require("./model/db");
+
 
 app.use(express.json());
 
