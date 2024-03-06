@@ -1,12 +1,17 @@
 const express = require("express");
 const app = express();
-const { Video, User } = require("./model/schema");
-//const userRoutes = require("./routes/userRoutes");
-//const videosRoutes = require("./routes/videosRoutes");
+require("./model/db");
+const userRoutes = require("./routes/userRoutes");
+const videosRoutes = require("./routes/videosRoutes");
+
+//akshan
 require("./model/db");
 
 app.use(express.json());
+
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static("views"));
+app.set("view engine", "ejs");
 
 //app.use("/api", userRoutes);
 //app.use("/api", videosRoutes);
