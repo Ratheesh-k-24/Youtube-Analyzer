@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
-const userRoutes = require("./backend/routes/userRoutes");
-const videosRoutes = require("./backend/routes/videosRoutes");
+const userRoutes = require("./routes/userRoutes");
+const videosRoutes = require("./routes/videosRoutes");
 require("./backend/model/db");
 
 app.use(express.json());
