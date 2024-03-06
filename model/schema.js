@@ -17,7 +17,10 @@ const userSchema = new mongoose.Schema({
   usertype: String,
 });
 
-const videoDetails = mongoose.model("Videos", videoSchema);
-module.exports = videoDetails;
-const userDetails = mongoose.model("Users", userSchema);
-module.exports = userDetails;
+const Video = mongoose.model("videos", videoSchema);
+const User = mongoose.model("users", userSchema);
+
+module.exports = {
+  Video: Video,
+  User: User,
+};
