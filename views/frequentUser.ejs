@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frequently commented user</title>
+  </head>
+  <body>
+    <h1>Frequently commented Users</h1>
+    <ul>
+      <% sortedUsers.filter(user => user.count > threshold).forEach(user => { %>
+      <li><%= user.user %> - <%= user.count %> views</li>
+      <% }); %>
+    </ul>
+  </body>
+</html>
