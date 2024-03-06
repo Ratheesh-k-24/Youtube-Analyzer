@@ -17,6 +17,8 @@ const userSchema = new mongoose.Schema({
   usertype: String,
 });
 
+//schema model
+
 const Video = mongoose.model("videos", videoSchema);
 const User = mongoose.model("users", userSchema);
 

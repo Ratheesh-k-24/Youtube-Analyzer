@@ -347,6 +347,6 @@
     "userId": "user4243",
     "userType": "user",
     "userEmail": "madison.scott@example.com",
-    "userPassword": "user@4243"
+    "userPassword": "user@424"
   }
 ]

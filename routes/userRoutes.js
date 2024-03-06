@@ -25,7 +25,7 @@ router.post("/register", async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
-    console.log("Request body:", req.body); // Logging request body
+    console.log("Request body:", req.body); // Logging request
     console.log("Password:", password); // Logging password
     let user = await User.findOne({ email });
     if (user) {

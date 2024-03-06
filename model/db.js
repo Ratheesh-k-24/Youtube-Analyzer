@@ -13,6 +13,7 @@ mongoose
     console.error("Error connecting to MongoDB:", err.message);
   });
 
+//exports
 module.exports = mongoose.connection;
 module.exports.Video = Video;
 module.exports.User = User;
