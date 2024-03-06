@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Comments</title>
+</head>
+<body>
+    <h1>Video Comments for youtube</h1> <!--video-->
+
+    <h2>All Comments</h2>
+    <ul>
+        <% comments.forEach(comment => { %>
+            <li><%= comment %></li>
+        <% }); %>
+    </ul>
+
+    <h2>Filtered Comments</h2>
+    <form action="/videos/<%= videoName %>/comments" method="GET">
+        <label for="sentiment">Filter Comments By Sentiment:</label>
+        <select name="sentiment" id="sentiment">
+            <option value="positive">Positive</option>
+            <option value="negative">Negative</option>
+        </select>
+        <button type="submit">Filter</button>
+    </form>
+    <ul>
+        <% filteredComments.forEach(comment => { %>
+            <li><%= comment %></li>
+        <% }); %>
+    </ul>
+</body>
+</html>
