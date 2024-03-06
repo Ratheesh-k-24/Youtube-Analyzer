@@ -69,7 +69,7 @@ router.get('/videos/:videoName/comments/:sentiment', async (req, res) => {
 
 //Routes for Subscription Details
 
-app.get('/video', async (req, res) => {
+router.get('/videos', async (req, res) => {
     try {
       const videos = await Video.find().sort({ views: -1 });
       res.render('videos', { videos });

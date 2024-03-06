@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Videos</title>
+  <title>Subscriptions</title>
 </head>
 <body>
-  <h1>All Videos</h1>
+  <h1>User Subscriptions</h1>
   <ul>
-    <% videos.forEach(video => { %>
+    <% youtubeUserData.forEach(user => { %>
       <li>
-        <h2><%= video.video_name %></h2>
-        <p>Views: <%= video.views %></p>
-        <p>Subscriptions: <%= video.subscription %></p>
+        <h2><%= user.username %></h2>
+        <p>Email: <%= user.userEmail %></p>
+        <p>Subscription Type: <%= user.userType %></p>
       </li>
     <% }); %>
   </ul>
