@@ -17,5 +17,7 @@ const userSchema = new mongoose.Schema({
   usertype: String,
 });
 
-module.exports = mongoose.model("Videos", videoSchema);
-module.exports = mongoose.model("Users", userSchema);
+const videoDetails = mongoose.model("Videos", videoSchema);
+module.exports = videoDetails;
+const userDetails = mongoose.model("Users", userSchema);
+module.exports = userDetails;
