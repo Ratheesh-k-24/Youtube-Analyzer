@@ -1,6 +1,6 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const app = express();
-require("./model/db");
 const userRoutes = require("./routes/userRoutes");
 const videosRoutes = require("./routes/videosRoutes");
 
@@ -16,6 +16,7 @@ app.set("view engine", "ejs");
 //app.use("/api", userRoutes);
 //app.use("/api", videosRoutes);
 app.use("/api",{Video,User});
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
