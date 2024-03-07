@@ -14,7 +14,7 @@
 
     <style>
       body {
-        background-color: lightyellow;
+        background-color: rgb(2, 117, 117);
       }
 
       .container {
@@ -34,6 +34,16 @@
       /* Hide second form initially */
       #registerForm {
         display: none;
+      }
+
+      .card input:hover {
+        background-color: rgba(189, 209, 6, 0.1);
+      }
+
+      /* Change button color on hover */
+      .btn-primary:hover {
+        background-color: #ff5722 !important; /* More vibrant color */
+        border-color: #ff5722 !important; /* Matching border color */
       }
     </style>
   </head>
@@ -69,8 +79,11 @@
               placeholder="Enter Password"
               value=""
             />
+            <br />
           </div>
-          <button type="submit" class="btn btn-primary">Login</button>
+          <div class="d-grid gap-2 col-2 mx-auto">
+            <button type="submit" class="btn btn-primary">Login</button>
+          </div>
         </form>
 
         <!-- Register Form -->
@@ -115,7 +128,9 @@
               value=""
             />
           </div>
-          <button type="submit" class="btn btn-primary">Register</button>
+          <div class="d-grid gap-2 col-2 mx-auto">
+            <button type="submit" class="btn btn-primary">Register</button>
+          </div>
         </form>
       </div>
     </div>

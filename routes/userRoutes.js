@@ -65,6 +65,18 @@ router.post("/login", async (req, res) => {
     if (!isMatch) {
       return res.status(400).json({ msg: "Invalid credentials" });
     }
+
+    // Check userType
+    if (user.usertype == "admin") {
+      res.render("adminView");
+    } else {
+      res.render("subscription");
+    }
+
+    if (user.usertype !== "admin" && user.usertype !== "user") {
+      return res.status(400).json({ msg: "Invalid user type" });
+    }
+
     // Generate token
     const payload = {
       user: {
