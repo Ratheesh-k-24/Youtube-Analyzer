@@ -3,9 +3,9 @@ const mongoose = require("mongoose");
 //videoschema
 
 const videoSchema = new mongoose.Schema({
-  videoId: String,
-  videoCategory: String,
-  videoName: String,
+  video_id: String,
+  video_category: String,
+  video_name: String,
   views: Number,
   comments: [String],
   subscription: Number,

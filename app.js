@@ -3,7 +3,7 @@ const mongooseConnection = require("./model/db");
 const app = express();
 const path = require("path");
 const userRoutes = require("./routes/userRoutes");
-// const videosRoutes = require("./routes/videosRoutes");
+const videosRoutes = require("./routes/videosRoutes");
 
 app.use(express.json());
 app.use(express.static("views"));
@@ -12,7 +12,7 @@ app.set("view engine", "ejs");
 
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/users", userRoutes);
-// app.use("/api/videos", videosRoutes);
+app.use("/api/videos", videosRoutes);
 
 const PORT = process.env.PORT || 3000;
 mongooseConnection.once("open", () => {
