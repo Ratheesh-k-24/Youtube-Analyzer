@@ -13,11 +13,11 @@ const videoSchema = new mongoose.Schema({
 
 //user schema
 const userSchema = new mongoose.Schema({
-  userid: String,
   username: String,
-  email: String,
-  password: String,
-  usertype: String,
+  userId: String,
+  userType: String,
+  userEmail: String,
+  userPassword: String,
 });
 
 //schema model
