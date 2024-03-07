@@ -25,7 +25,7 @@
     </ul>
 
     <h2>Filtered Comments</h2>
-    <form action="/api/videos/comments/<%= videoName %>" method="post">
+    <form action="/api/videos/comments/<%= videoName %>" method="get">
         <label for="sentiment">Filter Comments By Sentiment:</label>
         <select name="sentiment" id="sentiment">
             <option value="positive">Positive</option>
