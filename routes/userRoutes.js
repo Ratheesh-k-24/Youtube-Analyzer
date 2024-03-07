@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../model/schema").User;
-
+const Video = require("../model/schema").Video;
 // Login page GET
 router.get("/login", (req, res) => {
   res.render("authentication", {
@@ -23,10 +23,9 @@ router.get("/register", (req, res) => {
 // Registration route
 router.post("/register", async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const { username, email, password, userType } = req.body;
 
     console.log("Request body:", req.body); // Logging request
-    console.log("Password:", password); // Logging password
     let user = await User.findOne({ email });
     if (user) {
       return res.status(400).json({ msg: "User already exists" });
@@ -34,15 +33,18 @@ router.post("/register", async (req, res) => {
     // Hash password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
-    console.log("Hashed Password:", hashedPassword);
+    // console.log("Hashed Password:", hashedPassword);
     // Create new user
     user = new User({
       username,
       email,
       password: hashedPassword,
+      userType,
     });
     await user.save();
-    res.status(201).json({ msg: "User created successfully" });
+
+    // res.status(201).json({ msg: "User created successfully" });
+    return res.redirect("/api/users/login");
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
@@ -52,14 +54,15 @@ router.post("/register", async (req, res) => {
 // Login route
 router.post("/login", async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password, userType } = req.body;
 
     // Check if user exists
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(400).json({ msg: "Invalid credentials" });
     }
-    console.log("User password:", user.password);
+    // console.log("User password:", user.password);
+    console.log("usertype:", user.userType);
     // Validate password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
@@ -67,28 +70,18 @@ router.post("/login", async (req, res) => {
     }
 
     // Check userType
-    if (user.usertype == "admin") {
-      res.render("adminView");
+    if (user.userType === "admin") {
+      return res.render("adminView"); // Render admin view
     } else {
-      res.render("subscription");
+      const videos = await Video.find(
+        {},
+        { video_name: 1, views: 1, subscription: 1 }
+      ).sort({ views: -1 });
+      // console.log(videos);
+      res.redirect("/api/videos/views/subscription");
     }
-
-    if (user.usertype !== "admin" && user.usertype !== "user") {
-      return res.status(400).json({ msg: "Invalid user type" });
-    }
-
-    // Generate token
-    const payload = {
-      user: {
-        id: user.id,
-      },
-    };
-    jwt.sign(payload, "jwtSecret", { expiresIn: 3600 }, (err, token) => {
-      if (err) throw err;
-      res.json({ token });
-    });
   } catch (err) {
-    console.error(err.message);
+    console.error("error:", err.message);
     res.status(500).send("Server Error");
   }
 });
