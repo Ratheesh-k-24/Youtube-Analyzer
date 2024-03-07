@@ -1,6 +1,6 @@
 [
   {
-    "username": "AndrewBaker",
+    "username": "AndrewBake",
     "userId": "admin123",
     "userType": "admin",
     "userEmail": "andrew.baker@example.com",

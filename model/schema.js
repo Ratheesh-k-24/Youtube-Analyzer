@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+//videoschema
+
 const videoSchema = new mongoose.Schema({
   videoId: String,
   videoCategory: String,
@@ -9,6 +11,7 @@ const videoSchema = new mongoose.Schema({
   subscription: Number,
 });
 
+//user schema
 const userSchema = new mongoose.Schema({
   userid: String,
   username: String,
