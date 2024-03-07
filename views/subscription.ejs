@@ -3,18 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Subscriptions</title>
+  <title>Video Details</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
 </head>
 <body>
-  <h1>User Subscriptions</h1>
-  <ul>
-    <% youtubeUserData.forEach(user => { %>
-      <li>
-        <h2><%= user.username %></h2>
-        <p>Email: <%= user.userEmail %></p>
-        <p>Subscription Type: <%= user.userType %></p>
-      </li>
-    <% }); %>
-  </ul>
+  <h1> Video Details</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Video Name</th>
+        <th>Views</th>
+        <th>Subscription</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% youtubeUserData.forEach(user => { %>
+        <tr>
+          <td><%= user.video_name %></td>
+          <td><%= user.views %></td>
+          <td><%= user.subscription %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
 </body>
 </html>
