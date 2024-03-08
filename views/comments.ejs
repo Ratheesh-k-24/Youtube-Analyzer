@@ -1,38 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Video Comments</title>
     <style>
-        body{
-            background-color: rgb(2, 117, 117);
-        }
-        h1{
-            align-content: center;
-        }
+      body {
+        background-color: rgb(2, 117, 117);
+      }
+      h1 {
+        align-content: center;
+      }
     </style>
-       
-</head>
-<body>
+  </head>
+  <body>
     <h1>Video Comments for <%= videoName %></h1>
 
     <h2>All Comments</h2>
     <ul>
-        <% filteredComments.forEach(comment => { %>
-            <li><%= comment %></li>
-        <% }); %>
+      <% filteredComments.forEach(comment => { %>
+      <li><%= comment %></li>
+      <% }); %>
     </ul>
 
     <h2>Filtered Comments</h2>
-    <form action="/api/videos/comments/<%= videoName %>" method="get">
-        <label for="sentiment">Filter Comments By Sentiment:</label>
-        <select name="sentiment" id="sentiment">
-            <option value="positive">Positive</option>
-            <option value="negative">Negative</option>
-        </select>
-        <button type="submit">Filter</button>
-    </form>
 
-</body>
+    <form action="/api/videos/comments/<%= videoName %>" method="post">
+      <label for="sentiment">Filter Comments By Sentiment:</label>
+      <select name="sentiment" id="sentiment">
+        <option value="positive">Positive</option>
+        <option value="negative">Negative</option>
+      </select>
+      <button type="submit">Filter</button>
+    </form>
+  </body>
 </html>

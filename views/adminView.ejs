@@ -1,31 +1,86 @@
-<%=doctype%>
-<%=html%>
-<%=head%>
-<%=<title>
-    <%= Manage Users %>
-</title>%>
-<%=/head>
-<%=<body>
-    <%=h1>Manage Users<%=/h1>
-    <%=<table>
-        <%=<thead>
-        <%=<tr>
-            <th><%=userid %></th>
-            <th><%=username %></th>
-            <th><%=email %></th>
-            <th><%=password %></th>
-            <th><%=usertype %></th>
-        </tr>%>
-        </thead>%>
-    <%=<tbody>
-         <%= each user in users %>
-        <%=<tr>
-            <td><%= user.userid %></td>
-            <td><%= user.username %></td>
-            <td><%= user.email %></td>
-            <td><%= user.password %></td>
-            <td><%= user.usertype %></td>
-        </tr>%>
-    </tbody>%>
-    </table>%>
-</body>%>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Manage Users</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4; /* Light background color */
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      table {
+        width: 80%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        background-color: #fff; /* White background color for the table */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle border effect */
+      }
+
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd; /* Border between rows */
+      }
+
+      th {
+        background-color: #4caf50; /* Header background color */
+        color: white;
+      }
+
+      tr:hover {
+        background-color: #f5f5f5; /* Hover background color for rows */
+      }
+
+      a {
+        text-decoration: none;
+        padding: 6px 12px;
+        display: inline-block;
+        background-color: #337ab7; /* Link background color */
+        color: #fff;
+        border-radius: 4px;
+      }
+
+      a:hover {
+        background-color: #23527c; /* Hover background color for links */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Manage Users</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>username</th>
+          <th>userId</th>
+          <th>userType</th>
+          <th>userEmail</th>
+          <th>userPassword</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach(user => { %>
+        <tr>
+          <td><%= user.username %></td>
+          <td><%= user.userId %></td>
+          <td><%= user.userType %></td>
+          <td><%= user.userEmail %></td>
+          <td><%= user.userPassword %></td>
+          <td>
+            <a href="/api/videos/users/edit/<%= user._id %>">Edit</a>
+            <a href="/api/videos/users/delete/<%= user._id %>">Delete</a>
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </body>
+</html>

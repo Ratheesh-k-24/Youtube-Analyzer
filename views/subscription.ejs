@@ -1,47 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video Details</title>
-  <style>
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Details</title>
+    <style>
+      body {
+        background-color: aquamarine;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      h1 {
+        background-color: beige;
+        text-align: center;
+        font-style: oblique;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
 
-    th, td {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 8px;
-    }
+      th,
+      td {
+        border: 2px solid #0c0101;
+        text-align: left;
+        padding: 8px;
+        background-color: blanchedalmond;
+      }
 
-    th {
-      background-color: #f2f2f2;
-    }
-  </style>
-</head>
-<body>
-  <%- include('menu.ejs') %>
-  <h1> Video Details</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Video Name</th>
-        <th>Views</th>
-        <th>Subscription</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% youtubeUserData.forEach(user => { %>
+      th {
+        background-color: rgb(245, 234, 234);
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('menu.ejs') %>
+    <h1>Video Details</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Video Name</th>
+          <th>Views</th>
+          <th>Subscription</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% videos.forEach(user => { %>
         <tr>
           <td><%= user.video_name %></td>
           <td><%= user.views %></td>
           <td><%= user.subscription %></td>
         </tr>
-      <% }); %>
-    </tbody>
-  </table>
-</body>
+        <% }); %>
+      </tbody>
+    </table>
+  </body>
 </html>

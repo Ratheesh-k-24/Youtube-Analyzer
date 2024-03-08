@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <title>Edit User</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center; /* Center form content */
+      }
+
+      h1 {
+        margin-top: 0; /* Remove default margin */
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        text-align: left; /* Align label text to the left */
+      }
+
+      input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 16px;
+        box-sizing: border-box;
+      }
+
+      button {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+   
+    <form action="/edit/<%= user._id %>" method="POST">
+       <h1>Edit User</h1>
+      <label for="username">User name:</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        value="<%= user.username %>"
+        required
+      />
+
+      <br />
+      <label for="userType">UserType:</label>
+      <input
+        type="text"
+        id="userType"
+        name="userType"
+        value="<%= user.userType %>"
+        required
+      />
+      <br />
+      <label for="userEmail">UserEmail:</label>
+      <input
+        type="email"
+        id="userEmail"
+        name="userEmail"
+        value="<%= user.userEmail %>"
+        required
+      />
+      <br />
+      <label for="userPassword">UserPassword:</label>
+      <input
+        type="password"
+        id="userPassword"
+        name="userPassword"
+        value="<%= user.userPassword %>"
+        required
+      />
+      <br />
+      <button type="submit">Update</button>
+    </form>
+  </body>
+</html>
